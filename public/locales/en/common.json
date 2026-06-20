@@ -1,0 +1,112 @@
+{
+  "app": {
+    "name": "DueCircle",
+    "tagline": "Invoicing & ERP"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "products": "Products",
+    "units": "Units",
+    "warehouses": "Warehouses",
+    "quotations": "Quotations",
+    "invoices": "Invoices",
+    "payments": "Payments",
+    "creditNotes": "Credit Notes",
+    "debitNotes": "Debit Notes",
+    "stock": "Stock",
+    "cashBank": "Cash & Bank",
+    "reports": "Reports",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "auditTrail": "Audit Trail"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "add": "Add",
+    "remove": "Remove",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "print": "Print",
+    "send": "Send",
+    "preview": "Preview",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "close": "Close",
+    "view": "View",
+    "download": "Download",
+    "duplicate": "Duplicate",
+    "refresh": "Refresh",
+    "bulkSelect": "Select All",
+    "clearSelection": "Clear Selection"
+  },
+  "status": {
+    "draft": "Draft",
+    "sent": "Sent",
+    "paid": "Paid",
+    "partial": "Partial",
+    "overdue": "Overdue",
+    "voided": "Voided",
+    "cancelled": "Cancelled",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "expired": "Expired",
+    "converted": "Converted",
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending",
+    "processing": "Processing",
+    "failed": "Failed",
+    "delivered": "Delivered"
+  },
+  "table": {
+    "noData": "No data found",
+    "loading": "Loading...",
+    "totalItems": "{{count}} items",
+    "showingItems": "Showing {{from}}-{{to}} of {{total}}"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "itemsPerPage": "Items per page"
+  },
+  "messages": {
+    "saveSuccess": "Saved successfully",
+    "deleteSuccess": "Deleted successfully",
+    "sendSuccess": "Sent successfully",
+    "error": "Something went wrong. Please try again.",
+    "deleteConfirm": "Are you sure you want to delete this? This action cannot be undone.",
+    "unsavedChanges": "You have unsaved changes. Are you sure you want to leave?",
+    "connectionLost": "Connection lost. Some features may not work correctly.",
+    "connectionRestored": "Connection restored."
+  },
+  "currency": {
+    "symbol": "$",
+    "code": "USD"
+  },
+  "dateFormat": {
+    "date": "MMM d, yyyy",
+    "dateTime": "MMM d, yyyy h:mm a",
+    "time": "h:mm a"
+  },
+  "misc": {
+    "allOrganizations": "All Organizations",
+    "switchOrganization": "Switch Organization",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "notificationsEmpty": "No new notifications",
+    "globalSearch": "Search anything...",
+    "globalSearchHint": "Press ⌘K to search"
+  }
+}
