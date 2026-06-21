@@ -37,12 +37,12 @@
   --color-border-strong: #CBD5E1;
 
   /* Sidebar */
-  --sidebar-bg: #0F172A;
-  --sidebar-bg-active: #1E293B;
-  --sidebar-bg-hover: #1E293B;
+  --sidebar-bg: #1E293B;
+  --sidebar-bg-active: #334155;
+  --sidebar-bg-hover: #2D3B4F;
   --sidebar-text: #94A3B8;
   --sidebar-text-active: #FFFFFF;
-  --sidebar-accent: #6366F1;
+  --sidebar-accent: #818CF8;
   --sidebar-width: 240px;
   --sidebar-collapsed-width: 64px;
 
@@ -77,6 +77,22 @@
   --color-text-secondary: #94A3B8;
   --color-border: #334155;
   --color-border-strong: #475569;
+}
+
+/* Dark mode topbar — colorful indigo accent */
+[data-theme='dark'] .app-topbar {
+  background: linear-gradient(135deg, #1E1B4B 0%, #1E293B 100%) !important;
+  border-bottom: 1px solid #312E81 !important;
+  box-shadow: 0 1px 0 #312E8155 !important;
+}
+
+[data-theme='dark'] .app-topbar .ant-btn-text {
+  color: #A5B4FC !important;
+}
+
+[data-theme='dark'] .app-topbar .ant-btn-text:hover {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: #C7D2FE !important;
 }
 
 /* ─── Reset & Base ────────────────────────────────────────────────── */

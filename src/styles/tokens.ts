@@ -44,14 +44,14 @@ export const colorTokens = {
   borderStrong: '#CBD5E1',   // slate-300
   borderFocus: '#4338CA',
 
-  // Sidebar (dark)
-  sidebarBg: '#0F172A',      // slate-900
-  sidebarBgActive: '#1E293B', // slate-800
-  sidebarBgHover: '#1E293B',
+  // Sidebar (dark — lightened to slate-800 base)
+  sidebarBg: '#1E293B',      // slate-800 (was slate-900, now lighter)
+  sidebarBgActive: '#334155', // slate-700
+  sidebarBgHover: '#2D3B4F',
   sidebarText: '#94A3B8',    // slate-400
   sidebarTextActive: '#FFFFFF',
-  sidebarAccent: '#6366F1',  // indigo-500 (brighter on dark bg)
-  sidebarBorder: '#1E293B',
+  sidebarAccent: '#818CF8',  // indigo-400 (brighter on lighter bg)
+  sidebarBorder: '#2D3B4F',
 
   // Status colors for badges
   statusDraft: '#6B7280',

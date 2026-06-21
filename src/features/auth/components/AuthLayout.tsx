@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { ConfigProvider } from 'antd'
 import { colorTokens } from '@styles/tokens'
+import { antdTheme } from '@styles/theme'
 
 interface Props {
   children: ReactNode
@@ -9,11 +11,13 @@ interface Props {
 
 export function AuthLayout({ children, showBrand = true }: Props) {
   return (
+    // Force light theme for all auth pages — dark mode must not affect login/signup
+    <ConfigProvider theme={antdTheme}>
     <div style={{
       minHeight: '100vh',
       display: 'grid',
       gridTemplateColumns: '1fr',
-      background: colorTokens.bgPage,
+      background: '#F1F5F9',  // always light, never dark
     }}>
       {/* Left panel — branding (hidden on mobile) */}
       <div style={{
@@ -39,7 +43,7 @@ export function AuthLayout({ children, showBrand = true }: Props) {
                   marginTop: 12,
                   fontSize: 22,
                   fontWeight: 700,
-                  color: colorTokens.text,
+                  color: '#0F172A',  // always dark text on light bg
                   letterSpacing: '-0.5px',
                 }}>
                   DueCircle
@@ -51,6 +55,7 @@ export function AuthLayout({ children, showBrand = true }: Props) {
         </div>
       </div>
     </div>
+    </ConfigProvider>
   )
 }
 
