@@ -58,8 +58,10 @@ export function useLogin() {
 
   return useMutation({
     mutationFn: async (data: LoginRequest): Promise<LoginResponse> => {
-      // Dev bypass — delete this block when backend is ready
-      if (import.meta.env.DEV && data.email === DEV_EMAIL && data.password === DEV_PASSWORD) {
+      // Demo bypass — there's no live backend yet, so this is the only way
+      // to sign in (locally and on the published GitHub Pages demo).
+      // Delete this block once a real backend is wired up.
+      if (data.email === DEV_EMAIL && data.password === DEV_PASSWORD) {
         return new Promise((res) => setTimeout(() => res(mockLogin()), 400))
       }
       return authApi.login(data)
