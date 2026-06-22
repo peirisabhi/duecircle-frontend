@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Card, Row, Col, Typography, Button } from 'antd'
-import { BarChartOutlined, FileTextOutlined, TeamOutlined, ShoppingOutlined, CalculatorOutlined } from '@ant-design/icons'
+import { BarChartOutlined, TeamOutlined, ShoppingOutlined, CalculatorOutlined } from '@ant-design/icons'
 import { colorTokens } from '@styles/tokens'
 
 const { Title, Text } = Typography

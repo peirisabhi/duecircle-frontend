@@ -1,9 +1,12 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // GitHub Pages serves this project from https://peirisabhi.github.io/duecircle-frontend/
+  base: '/duecircle-frontend/',
   plugins: [react()],
   resolve: {
     alias: {

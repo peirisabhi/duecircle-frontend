@@ -4,7 +4,7 @@ import { Form, Input, Button, Select, Steps, Typography, Alert } from 'antd'
 import { UserOutlined, MailOutlined, LockOutlined, BankOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
-import { useForm, Controller, useWatch } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AuthLayout } from '../components/AuthLayout'
 import { useSignup } from '../hooks/useAuth'
@@ -25,10 +25,10 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-const STEPS = [
-  { title: 'Your account', fields: ['firstName', 'lastName', 'email', 'password'] as const },
-  { title: 'Organization', fields: ['orgName'] as const },
-  { title: 'Preferences', fields: ['currency', 'timezone'] as const },
+const STEPS: { title: string; fields: (keyof FormData)[] }[] = [
+  { title: 'Your account', fields: ['firstName', 'lastName', 'email', 'password'] },
+  { title: 'Organization', fields: ['orgName'] },
+  { title: 'Preferences', fields: ['currency', 'timezone'] },
 ]
 
 export default function SignupPage() {
@@ -45,7 +45,7 @@ export default function SignupPage() {
   })
 
   const nextStep = async () => {
-    const valid = await trigger(STEPS[currentStep].fields as (keyof FormData)[])
+    const valid = await trigger(STEPS[currentStep].fields)
     if (valid) setCurrentStep((s) => s + 1)
   }
 

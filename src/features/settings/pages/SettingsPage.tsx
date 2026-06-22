@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { Card, Tabs, Form, Input, Button, Switch, Select, InputNumber, Table, Tag, Modal, Avatar, Upload, Typography, Row, Col, Divider, Space, message } from 'antd'
-import { PlusOutlined, EditOutlined, DeleteOutlined, UserOutlined, UploadOutlined } from '@ant-design/icons'
+import { Card, Tabs, Form, Input, Button, Switch, Select, InputNumber, Table, Tag, Modal, Avatar, Typography, Row, Col, Space, message } from 'antd'
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { colorTokens } from '@styles/tokens'
-import { useAuthStore } from '@shared/store'
 import { initials } from '@shared/utils'
 
 const { Title, Text } = Typography

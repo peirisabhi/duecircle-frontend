@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Table, Button, Typography, Card, Tag, Space } from 'antd'
+import { Table, Button, Typography, Card, Tag } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { PlusOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'

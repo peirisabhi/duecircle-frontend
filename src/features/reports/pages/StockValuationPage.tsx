@@ -1,6 +1,6 @@
-import { Card, Table, Tag, Row, Col, Statistic, Typography, Progress } from 'antd'
+import { Card, Table, Tag, Row, Col, Statistic, Typography } from 'antd'
 import { useQuery } from '@tanstack/react-query'
-import { mockProducts, mockWarehouses } from '@shared/mocks/data'
+import { mockProducts } from '@shared/mocks/data'
 import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 

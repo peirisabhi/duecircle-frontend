@@ -4,7 +4,7 @@
  */
 import { Button, Input, InputNumber, Select, Tooltip, AutoComplete } from 'antd'
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons'
-import { useFieldArray, useWatch, Control, UseFormSetValue } from 'react-hook-form'
+import { useFieldArray, useWatch, Control, UseFormSetValue, FieldValues } from 'react-hook-form'
 import { calcLineItem } from '@shared/utils/invoice-calc'
 import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
@@ -32,18 +32,29 @@ export interface LineItemRow {
 }
 
 // The parent form's type must include: items: LineItemRow[]
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface Props {
-  control: Control<any>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setValue: UseFormSetValue<any>
+// Generic over the parent's form values so callers can pass their own typed
+// Control/setValue without it being narrowed to `Control<any>`.
+interface Props<TFieldValues extends FieldValues = FieldValues> {
+  control: Control<TFieldValues>
+  setValue: UseFormSetValue<TFieldValues>
   currency?: string
   fieldName?: string
 }
 
-export function LineItemEditor({ control, setValue, currency = 'USD', fieldName = 'items' }: Props) {
-  const { fields, append, remove } = useFieldArray({ control, name: fieldName })
-  const items: LineItemRow[] = useWatch({ control, name: fieldName }) ?? []
+export function LineItemEditor<TFieldValues extends FieldValues = FieldValues>({
+  control,
+  setValue,
+  currency = 'USD',
+  fieldName = 'items',
+}: Props<TFieldValues>) {
+  // Field paths are built dynamically (e.g. `${fieldName}.${index}.unitPrice`),
+  // so we intentionally widen to `any` for the internal field-array plumbing.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const genericControl = control as unknown as Control<any>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const setFieldValue = setValue as unknown as UseFormSetValue<any>
+  const { fields, append, remove } = useFieldArray({ control: genericControl, name: fieldName })
+  const items: LineItemRow[] = useWatch({ control: genericControl, name: fieldName }) ?? []
 
   const addRow = () =>
     append({ productName: '', description: '', quantity: 1, unitPrice: 0, discount: 0, discountType: 'PERCENT', taxRate: 0 })
@@ -51,8 +62,8 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
   const onProductSelect = (value: string, index: number) => {
     const product = PRODUCT_OPTIONS.find((p) => p.value === value)
     if (product) {
-      setValue(`${fieldName}.${index}.unitPrice`, product.price)
-      setValue(`${fieldName}.${index}.taxRate`, product.taxRate)
+      setFieldValue(`${fieldName}.${index}.unitPrice`, product.price)
+      setFieldValue(`${fieldName}.${index}.taxRate`, product.taxRate)
     }
   }
 
@@ -96,8 +107,8 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
                 options={PRODUCT_OPTIONS}
                 filterOption={(input, opt) => (opt?.label as string ?? '').toLowerCase().includes(input.toLowerCase())}
                 value={row.productName}
-                onChange={(val) => setValue(`${fieldName}.${index}.productName`, val)}
-                onSelect={(val) => { setValue(`${fieldName}.${index}.productName`, val); onProductSelect(val, index) }}
+                onChange={(val) => setFieldValue(`${fieldName}.${index}.productName`, val)}
+                onSelect={(val) => { setFieldValue(`${fieldName}.${index}.productName`, val); onProductSelect(val, index) }}
                 placeholder="Product or service name"
                 style={{ width: '100%' }}
               >
@@ -107,7 +118,7 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
                 size="small"
                 placeholder="Description (optional)"
                 value={row.description ?? ''}
-                onChange={(e) => setValue(`${fieldName}.${index}.description`, e.target.value)}
+                onChange={(e) => setFieldValue(`${fieldName}.${index}.description`, e.target.value)}
                 style={{ fontSize: 12, color: colorTokens.textSecondary }}
               />
             </div>
@@ -117,7 +128,7 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
               size="small"
               min={0}
               value={row.quantity}
-              onChange={(v) => setValue(`${fieldName}.${index}.quantity`, v ?? 0)}
+              onChange={(v) => setFieldValue(`${fieldName}.${index}.quantity`, v ?? 0)}
               style={{ width: 80, textAlign: 'right' }}
               controls={false}
             />
@@ -128,7 +139,7 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
               min={0}
               precision={2}
               value={row.unitPrice}
-              onChange={(v) => setValue(`${fieldName}.${index}.unitPrice`, v ?? 0)}
+              onChange={(v) => setFieldValue(`${fieldName}.${index}.unitPrice`, v ?? 0)}
               style={{ width: 110, textAlign: 'right' }}
               controls={false}
             />
@@ -139,7 +150,7 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
               min={0}
               max={100}
               value={row.discount}
-              onChange={(v) => setValue(`${fieldName}.${index}.discount`, v ?? 0)}
+              onChange={(v) => setFieldValue(`${fieldName}.${index}.discount`, v ?? 0)}
               style={{ width: 80, textAlign: 'right' }}
               controls={false}
               suffix="%"
@@ -149,7 +160,7 @@ export function LineItemEditor({ control, setValue, currency = 'USD', fieldName 
             <Select
               size="small"
               value={row.taxRate}
-              onChange={(v) => setValue(`${fieldName}.${index}.taxRate`, v)}
+              onChange={(v) => setFieldValue(`${fieldName}.${index}.taxRate`, v)}
               style={{ width: 90 }}
               options={TAX_RATES}
             />

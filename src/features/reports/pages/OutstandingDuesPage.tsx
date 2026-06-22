@@ -1,6 +1,6 @@
 import { Card, Table, Tag, Row, Col, Statistic, Typography, Progress } from 'antd'
 import { useQuery } from '@tanstack/react-query'
-import { mockInvoices, mockCustomers } from '@shared/mocks/data'
+import { mockInvoices } from '@shared/mocks/data'
 import { formatCurrency, formatDate } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 import { StatusTag } from '@shared/components/ui/StatusTag'

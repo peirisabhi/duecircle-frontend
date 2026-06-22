@@ -1,4 +1,4 @@
-import { Card, Row, Col, Statistic, Table, Typography, Select, DatePicker } from 'antd'
+import { Card, Row, Col, Statistic, Table, Typography, DatePicker } from 'antd'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { useQuery } from '@tanstack/react-query'
 import { mockSalesData, mockInvoices } from '@shared/mocks/data'

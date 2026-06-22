@@ -6,7 +6,7 @@ import { mockProducts } from '@shared/mocks/data'
 import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 
-const { Title, Text } = Typography
+const { Title } = Typography
 
 export default function StockDashboardPage() {
   const navigate = useNavigate()

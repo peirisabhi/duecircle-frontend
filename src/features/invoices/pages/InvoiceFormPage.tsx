@@ -1,5 +1,5 @@
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
-import { Form, Input, Select, DatePicker, Button, Card, Row, Col, Typography, Space, Divider, InputNumber } from 'antd'
+import { Form, Input, Select, DatePicker, Button, Card, Row, Col, Typography, Space, Divider } from 'antd'
 import { ArrowLeftOutlined, SaveOutlined, SendOutlined } from '@ant-design/icons'
 import { useForm, Controller, useWatch } from 'react-hook-form'
 import { z } from 'zod'
@@ -46,7 +46,7 @@ export default function InvoiceFormPage() {
   const { message } = App.useApp()
   const isEdit = !!id && id !== 'new'
 
-  const { control, handleSubmit, setValue, watch, formState: { errors, isSubmitting } } = useForm<FormData>({
+  const { control, handleSubmit, setValue, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
       customerId: searchParams.get('customerId') ?? '',

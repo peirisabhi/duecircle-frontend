@@ -3,7 +3,7 @@ import { Card, Table, Tag, Select, DatePicker, Space, Typography, Button } from 
 import { ArrowDownOutlined, ArrowUpOutlined, SwapOutlined, PlusOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { mockStockMovements, mockProducts, mockWarehouses } from '@shared/mocks/data'
+import { mockStockMovements, mockProducts } from '@shared/mocks/data'
 import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 

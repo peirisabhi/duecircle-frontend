@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Card, Row, Col, Table, Tag, Button, Typography, Space, Modal, Form, Input, InputNumber, Select, Statistic, Tabs } from 'antd'
+import { Card, Row, Col, Table, Tag, Button, Typography, Space, Modal, Form, Input, InputNumber, Select, Statistic } from 'antd'
 import { PlusOutlined, BankOutlined, DollarOutlined, ArrowRightOutlined, ArrowLeftOutlined, SwapOutlined } from '@ant-design/icons'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { mockCashAccounts, mockCashTransactions } from '@shared/mocks/data'
 import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
@@ -17,7 +17,6 @@ const TX_CONFIG: Record<string, { color: string; icon: React.ReactNode; label: s
 type TxType = 'DEPOSIT' | 'WITHDRAWAL' | 'TRANSFER'
 
 export default function CashBankPage() {
-  const qc = useQueryClient()
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null)
   const [txModalOpen, setTxModalOpen] = useState(false)
   const [txType, setTxType] = useState<TxType>('DEPOSIT')

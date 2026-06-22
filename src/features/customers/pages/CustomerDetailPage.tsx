@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { Card, Row, Col, Descriptions, Button, Table, Typography, Tag, Space, Statistic, Avatar, Tabs, Empty } from 'antd'
+import { Card, Row, Col, Button, Table, Typography, Tag, Space, Statistic, Avatar, Tabs, Empty } from 'antd'
 import { EditOutlined, ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { mockCustomers, mockInvoices, mockPayments } from '@shared/mocks/data'

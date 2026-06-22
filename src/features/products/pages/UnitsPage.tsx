@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Table, Button, Modal, Form, Input, Select, Space, Typography, Card, Popconfirm } from 'antd'
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { App } from 'antd'
 import { mockUnits } from '@shared/mocks/data'
 

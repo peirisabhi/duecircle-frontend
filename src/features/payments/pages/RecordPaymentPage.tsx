@@ -31,7 +31,7 @@ export default function RecordPaymentPage() {
   const { message } = App.useApp()
   const presetCustomerId = searchParams.get('customerId') ?? ''
 
-  const { control, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<FormData>({
+  const { control, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { customerId: presetCustomerId, amount: 0, method: 'BANK_TRANSFER', date: dayjs().format('YYYY-MM-DD'), reference: '', notes: '' },
   })
@@ -54,10 +54,6 @@ export default function RecordPaymentPage() {
   // Reset manual overrides when customer or amount changes
   useEffect(() => { setManualAllocations({}) }, [customerId, amount])
 
-  const effectiveAllocations = Object.keys(manualAllocations).length > 0
-    ? allocations.map(a => ({ ...a, allocated: manualAllocations[a.invoiceId] ?? a.allocated }))
-    : allocations
-
   const onSubmit = async () => {
     await new Promise(r => setTimeout(r, 700))
     void message.success('Payment recorded successfully')
@@ -76,9 +72,9 @@ export default function RecordPaymentPage() {
         return (
           <InputNumber value={val} min={0} max={r.outstanding} precision={2}
             onChange={v => setManualAllocations(prev => ({ ...prev, [r.invoiceId]: v ?? 0 }))}
-            style={{ width: 100 }} controls={false}
-            prefix="$" size="small"
-            styles={{ input: { fontWeight: 600, color: val > 0 ? colorTokens.success : undefined } }} />
+            style={{ width: 100, fontWeight: 600, color: val > 0 ? colorTokens.success : undefined }}
+            controls={false}
+            prefix="$" size="small" />
         )
       },
     },

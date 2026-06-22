@@ -1,7 +1,5 @@
 import { Card, Table, Row, Col, Statistic, Typography, DatePicker, Tag } from 'antd'
-import { useQuery } from '@tanstack/react-query'
-import { mockInvoices } from '@shared/mocks/data'
-import { formatCurrency, formatDate } from '@shared/utils'
+import { formatCurrency } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 
 const { Title } = Typography
@@ -9,9 +7,6 @@ const { Title } = Typography
 const TAX_RATE_LABELS: Record<number, string> = { 0: 'Exempt', 5: 'GST 5%', 10: 'GST 10%', 18: 'VAT 18%' }
 
 export default function TaxReportPage() {
-  const { data: invoices = [] } = useQuery({ queryKey: ['invoices'], queryFn: async () => mockInvoices })
-  const paidInvoices = invoices.filter(i => i.status === 'PAID' || i.status === 'PARTIAL')
-
   // Mock tax breakdown — in real app this comes from line items
   const taxByRate = [
     { rate: 18, taxable: 18200, taxAmount: 3276, invoiceCount: 4 },

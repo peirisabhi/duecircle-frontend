@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Row, Col, Card, Statistic, Button, Typography, Tag, List, Skeleton, Empty, Space } from 'antd'
+import { Row, Col, Card, Button, Typography, Tag, List, Skeleton, Empty, Space } from 'antd'
 import {
   PlusOutlined,
   FileTextOutlined,
@@ -11,9 +11,8 @@ import {
 } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { useTranslation } from 'react-i18next'
 import { useOrgStore } from '@shared/store'
-import { formatCurrency, formatDate, formatRelativeTime } from '@shared/utils'
+import { formatCurrency, formatDate } from '@shared/utils'
 import { colorTokens } from '@styles/tokens'
 import type { InvoiceStatus } from '@shared/types'
 
@@ -109,7 +108,6 @@ function KpiSkeleton() {
 }
 
 export default function DashboardPage() {
-  const { t } = useTranslation('common')
   const navigate = useNavigate()
   const activeOrg = useOrgStore((s) => s.activeOrg)
   const currency = activeOrg?.currency ?? 'USD'

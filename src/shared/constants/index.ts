@@ -23,7 +23,7 @@ export const CURRENCIES = [
   { value: 'MXN', label: 'MXN — Mexican Peso' },
 ]
 
-export const TIMEZONES = Intl.supportedValuesOf('timeZone').map((tz) => ({
+export const TIMEZONES = Intl.supportedValuesOf('timeZone').map((tz: string) => ({
   value: tz,
   label: tz.replace(/_/g, ' '),
 }))

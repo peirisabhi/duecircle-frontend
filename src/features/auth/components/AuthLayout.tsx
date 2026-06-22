@@ -20,10 +20,7 @@ export function AuthLayout({ children, showBrand = true }: Props) {
       background: '#F1F5F9',  // always light, never dark
     }}>
       {/* Left panel — branding (hidden on mobile) */}
-      <div style={{
-        display: 'none',
-        '@media (min-width: 1024px)': { display: 'flex' },
-      }} />
+      <div className="auth-brand-panel" />
 
       {/* Right panel — form */}
       <div style={{
