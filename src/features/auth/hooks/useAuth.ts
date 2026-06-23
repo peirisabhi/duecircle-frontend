@@ -64,6 +64,7 @@ export function useLogin() {
       if (data.email === DEV_EMAIL && data.password === DEV_PASSWORD) {
         return new Promise((res) => setTimeout(() => res(mockLogin()), 400))
       }
+
       return authApi.login(data)
     },
     onSuccess: (res) => {
